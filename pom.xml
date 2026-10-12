@@ -7,8 +7,7 @@
   <artifactId>ooad_project</artifactId>
   <version>1.0-SNAPSHOT</version>
   <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -21,7 +20,7 @@
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-fxml</artifactId>``
+      <artifactId>javafx-fxml</artifactId>
       <version>21.0.6</version>
     </dependency>
     <!-- H2 Database for the JDBC part -->
@@ -31,4 +30,7 @@
       <version>2.2.224</version>
     </dependency>
   </dependencies>
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    </build>
 </project>
