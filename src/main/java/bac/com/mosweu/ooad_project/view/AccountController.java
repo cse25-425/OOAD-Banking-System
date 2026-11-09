@@ -14,7 +14,7 @@ public class AccountController {
     private Label welcomeLabel;
 
     public void initialize() {
-        // You can later change this to grab the actual customer's name
+        // I can later change this to grab the actual customer's name
         welcomeLabel.setText("Welcome to your Dashboard, Ogone!");
     }
 
