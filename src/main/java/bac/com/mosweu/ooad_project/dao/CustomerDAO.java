@@ -27,4 +27,21 @@ public class CustomerDAO {
             return false;
         }
     }
+
+    public String getCustomerIdByUsername(String username) {
+        String query = "SELECT customerId FROM Customer WHERE username = ?";
+        try (Connection conn = DriverManager.getConnection(
+                        DatabaseInitializer.URL, DatabaseInitializer.USER, DatabaseInitializer.PASSWORD);
+                PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("customerId");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

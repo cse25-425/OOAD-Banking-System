@@ -32,9 +32,9 @@ public class LoginController {
         }
 
         CustomerDAO dao = new CustomerDAO();
-        boolean isVaild = dao.validateLogin(username, password);
+        boolean isValid = dao.validateLogin(username, password);
 
-        if (isVaild) {
+        if (isValid) {
             System.out.println("Login Successful!");
 
             try {

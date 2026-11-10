@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DatabaseInitializer {
     // This creates a file called bankdb.mv.db in the project folder
-    public static final String URL = "jdbc:h2:./bankdb";
+    public static final String URL = "jdbc:h2:./bankdb;AUTO_SERVER=TRUE";
     public static final String USER = "sa";
     public static final String PASSWORD = "";
 
@@ -30,6 +30,25 @@ public class DatabaseInitializer {
             stmt.execute(insertTestUser);
 
             System.out.println("Database initialized successfully.");
+
+            // Create Account Table
+            String createAccountTable =
+                    "CREATE TABLE IF NOT EXISTS Account (" + "accountNumber VARCHAR(50) PRIMARY KEY, "
+                            + "customerId VARCHAR(50), "
+                            + "accountType VARCHAR(50), "
+                            + "balance DOUBLE, "
+                            + "FOREIGN KEY (customerId) REFERENCES Customer(customerId))";
+            stmt.execute(createAccountTable);
+
+            // Insert a test Savings Account for admin (C001)
+            String insertSavingsAccount = "MERGE INTO Account (accountNumber, customerId, accountType, balance) "
+                    + "KEY(accountNumber) VALUES ('SA001', 'C001', 'Savings', 2000.00)";
+            stmt.execute(insertSavingsAccount);
+
+            // Insert a test Investment Account for admin (C001)
+            String insertInvestmentAccount = "MERGE INTO Account (accountNumber, customerId, accountType, balance) "
+                    + "KEY(accountNumber) VALUES ('IA001', 'C001', 'Investment', 3000.00)";
+            stmt.execute(insertInvestmentAccount);
         } catch (SQLException e) {
             e.printStackTrace();
         }

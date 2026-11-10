@@ -6,25 +6,29 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.Region?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bac.com.mosweu.ooad_project.view.AccountController" stylesheets="@styles.css">
-    
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bac.com.mosweu.ooad_project.view.AccountController">
+
     <!-- TOP HEADER -->
     <top>
         <HBox alignment="CENTER_LEFT" styleClass="header">
-            <Label text="Mosweu Banking" styleClass="header-label" HBox.hgrow="ALWAYS" />
-            <Button text="Logout" onAction="#handleLogout" styleClass="logout-button" />
+            <Label styleClass="header-label" text="Mosweu Banking" HBox.hgrow="ALWAYS"/>
+            <Button onAction="#handleLogout" styleClass="logout-button" text="Logout">
+                <HBox.margin>
+                    <Insets left="20.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
     </top>
 
     <!-- LEFT SIDEBAR (Navigation) -->
     <left>
         <VBox styleClass="sidebar">
-            <Button text="🏠 Dashboard" styleClass="menu-button" />
-            <Button text="💰 Deposit Funds" styleClass="menu-button" />
-            <Button text="💸 Withdraw Funds" styleClass="menu-button" />
-            <Button text="📜 Transaction History" styleClass="menu-button" />
+            <Button styleClass="menu-button" text="🏠 Dashboard"/>
+            <Button styleClass="menu-button" text="💰 Deposit Funds"/>
+            <Button styleClass="menu-button" text="💸 Withdraw Funds"/>
+            <Button styleClass="menu-button" text="📜 Transaction History"/>
         </VBox>
     </left>
 
@@ -32,21 +36,21 @@
     <center>
         <VBox styleClass="content-area">
             <!-- Welcome Message -->
-            <Label fx:id="welcomeLabel" text="Welcome, Customer!" styleClass="welcome-label" />
-            
+            <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Customer!"/>
+
             <!-- KPI Cards (Dummy data for now) -->
             <HBox spacing="20">
                 <VBox styleClass="kpi-card">
-                    <Label text="Total Balance" styleClass="kpi-title" />
-                    <Label text="BWP 5,000.00" styleClass="kpi-value" />
+                    <Label styleClass="kpi-title" text="Total Balance"/>
+                    <Label fx:id="totalBalanceLabel" styleClass="kpi-value" text="BWP 0.00"/>
                 </VBox>
                 <VBox styleClass="kpi-card">
-                    <Label text="Savings Account" styleClass="kpi-title" />
-                    <Label text="BWP 2,000.00" styleClass="kpi-value" />
+                    <Label styleClass="kpi-title" text="Savings Account"/>
+                    <Label fx:id="savingsBalanceLabel" styleClass="kpi-value" text="BWP 0.00"/>
                 </VBox>
                 <VBox styleClass="kpi-card">
-                    <Label text="Investment Account" styleClass="kpi-title" />
-                    <Label text="BWP 3,000.00" styleClass="kpi-value" />
+                    <Label styleClass="kpi-title" text="Investment Account"/>
+                    <Label fx:id="investmentBalanceLabel" styleClass="kpi-value" text="BWP 0.00"/>
                 </VBox>
             </HBox>
         </VBox>

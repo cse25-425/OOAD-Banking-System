@@ -1,4 +1,5 @@
 target/
+*.lst
 *.class
 .vscode/
 .idea/
