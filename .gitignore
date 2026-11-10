@@ -3,3 +3,4 @@ target/
 .vscode/
 .idea/
 /bankdb.mv.db
+/bankdb.trace.db

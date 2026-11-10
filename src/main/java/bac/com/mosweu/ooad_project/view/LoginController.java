@@ -1,5 +1,6 @@
 package bac.com.mosweu.ooad_project.view;
 
+import bac.com.mosweu.ooad_project.dao.CustomerDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     private TextField usernameField;
+
     @FXML
     private PasswordField passwordField;
 
@@ -22,8 +24,17 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // Temporary hardcoded check
-        if (username.equals("admin") && password.equals("1234")) {
+        if (username.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Please enter both username and password.");
+            alert.showAndWait();
+            return;
+        }
+
+        CustomerDAO dao = new CustomerDAO();
+        boolean isVaild = dao.validateLogin(username, password);
+
+        if (isVaild) {
             System.out.println("Login Successful!");
 
             try {
