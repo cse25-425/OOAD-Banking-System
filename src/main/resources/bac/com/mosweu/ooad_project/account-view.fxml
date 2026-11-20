@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="bac.com.mosweu.ooad_project.view.AccountController">
 
-    <!-- TOP HEADER -->
+    <!-- Application header and logout action. -->
     <top>
         <HBox alignment="CENTER_LEFT" styleClass="header">
             <Label styleClass="header-label" text="Mosweu Banking" HBox.hgrow="ALWAYS"/>
@@ -22,23 +22,24 @@
         </HBox>
     </top>
 
-    <!-- LEFT SIDEBAR (Navigation) -->
+    <!-- Dashboard actions are connected to AccountController handlers. -->
     <left>
         <VBox styleClass="sidebar">
             <Button styleClass="menu-button" text="🏠 Dashboard"/>
-            <Button styleClass="menu-button" text="💰 Deposit Funds"/>
-            <Button styleClass="menu-button" text="💸 Withdraw Funds"/>
-            <Button styleClass="menu-button" text="📜 Transaction History"/>
+            <Button onAction="#handleOpenAccount" styleClass="menu-button" text="Open Account"/>
+            <Button onAction="#handleDeposit" styleClass="menu-button" text="Deposit Funds"/>
+            <Button onAction="#handleWithdraw" styleClass="menu-button" text="Withdraw Funds"/>
+            <Button onAction="#handleTransactionHistory" styleClass="menu-button" text="Transaction History"/>
         </VBox>
     </left>
 
-    <!-- CENTER MAIN CONTENT -->
+    <!-- Customer-specific balances are filled after successful authentication. -->
     <center>
         <VBox styleClass="content-area">
-            <!-- Welcome Message -->
+            <!-- The controller replaces this text when it loads the authenticated customer. -->
             <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Customer!"/>
 
-            <!-- KPI Cards (Dummy data for now) -->
+            <!-- Initial values are placeholders until database balances are loaded. -->
             <HBox spacing="20">
                 <VBox styleClass="kpi-card">
                     <Label styleClass="kpi-title" text="Total Balance"/>
@@ -51,6 +52,10 @@
                 <VBox styleClass="kpi-card">
                     <Label styleClass="kpi-title" text="Investment Account"/>
                     <Label fx:id="investmentBalanceLabel" styleClass="kpi-value" text="BWP 0.00"/>
+                </VBox>
+                <VBox styleClass="kpi-card">
+                    <Label styleClass="kpi-title" text="Cheque Account"/>
+                    <Label fx:id="chequeBalanceLabel" styleClass="kpi-value" text="BWP 0.00"/>
                 </VBox>
             </HBox>
         </VBox>

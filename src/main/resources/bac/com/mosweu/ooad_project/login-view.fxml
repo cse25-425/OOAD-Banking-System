@@ -6,9 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="303.0" prefWidth="371.0" spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bac.com.mosweu.ooad_project.view.LoginController">
-    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Banking System Login" />
-    <TextField fx:id="usernameField" maxWidth="200" promptText="Username" />
-    <PasswordField fx:id="passwordField" maxWidth="200" promptText="Password" />
-    <Button onAction="#handleLogin" text="Login" />
+<VBox alignment="CENTER" prefHeight="303.0" prefWidth="371.0" spacing="15" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="bac.com.mosweu.ooad_project.view.LoginController">
+    <!-- Credentials are read by LoginController when the Login button is activated. -->
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Banking System Login"/>
+    <TextField fx:id="usernameField" maxWidth="200" promptText="Username"/>
+    <PasswordField fx:id="passwordField" maxWidth="200" promptText="Password"/>
+    <Button onAction="#handleLogin" text="Login"/>
+    <Button onAction="#handleRegister" text="Create Customer Account"/>
 </VBox>

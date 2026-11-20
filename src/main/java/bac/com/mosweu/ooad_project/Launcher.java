@@ -1,27 +1,12 @@
 package bac.com.mosweu.ooad_project;
 
-import bac.com.mosweu.ooad_project.database.DatabaseInitializer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+/** Starts the JavaFX banking application. */
+public class Launcher {
 
-public class Launcher extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-
-        DatabaseInitializer.initialize();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Launcher.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 400, 300);
-        stage.setTitle("Banking System");
-        stage.setScene(scene);
-        stage.show();
-    }
-
+    /** Delegates JavaFX startup to {@link MainApp}. */
     public static void main(String[] args) {
-        launch();
+        Application.launch(MainApp.class, args);
     }
 }
